@@ -42,7 +42,7 @@ function display() {
   list.forEach((element) => {
     const elementList = document.createElement('li');
     const description = document.createElement('span');
-    description.innerHTML = element.description; 
+    description.innerHTML = element.description;
     const checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
     elementList.classList.add('elementList');
