@@ -1,8 +1,7 @@
 body {
-  background-color: bisque;
-  color: gray;
+  background-color: gainsboro;
 }
 
-.hello {
-  color: red;
+#list-placeholder {
+  border: 1px solid gray;
 }
