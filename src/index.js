@@ -1,35 +1,33 @@
 import './style.css';
 
-let list = [
+const list = [
   {
     description: 'Clean Room',
     completed: false,
-    index: 2
+    index: 2,
   },
   {
     description: 'Wash Dishes',
     completed: false,
-    index: 4
+    index: 4,
   },
   {
     description: 'Make Dinner',
     completed: false,
-    index: 3
+    index: 3,
   },
   {
     description: 'first but last',
     completed: false,
-    index: 1
-  }
+    index: 1,
+  },
 ];
 
 function display() {
-  list.sort((x, y) => {
-    return x.index - y.index;
-  });
+  list.sort((x, y) => x.index - y.index);
 
   const title = document.createElement('h4');
-  title.innerHTML = "Today's To Do";
+  title.innerHTML = `Today's To Do`;
   
   const input = document.createElement('input');
   input.type = 'text';
@@ -42,7 +40,7 @@ function display() {
   listElements.appendChild(title);
   listElements.appendChild(input);
 
-  list.forEach(element => {
+  list.forEach((element) => {
     const elementList = document.createElement('li');
     const description = document.createElement('span');
     description.innerHTML = element.description; 
@@ -53,7 +51,7 @@ function display() {
     elementList.appendChild(checkBox);
     elementList.appendChild(description);
     listElements.appendChild(elementList);
-  })
+  });
 
   const button = document.createElement('button');
 
@@ -64,7 +62,6 @@ function display() {
 
   const listPlacehold = document.getElementById('list-placeholder');
   listPlacehold.appendChild(listElements);
-  console.log(listElements);
 }
 
 display();
