@@ -27,8 +27,7 @@ function display() {
   list.sort((x, y) => x.index - y.index);
 
   const title = document.createElement('h4');
-  title.innerHTML = `Today's To Do`;
-  
+  title.innerHTML = 'Today´s To Do';
   const input = document.createElement('input');
   input.type = 'text';
   input.name = 'task';
@@ -46,7 +45,6 @@ function display() {
     description.innerHTML = element.description; 
     const checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
-
     elementList.classList.add('elementList');
     elementList.appendChild(checkBox);
     elementList.appendChild(description);
