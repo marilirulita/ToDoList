@@ -2,12 +2,11 @@ import './style.css';
 import Task from './listTask.js';
 import add from './addElement.js';
 import deleteComplete from './deleteElements';
+import editTask from './editTask.js';
 
 let list = [];
 
 const display = (list) => {
-  //list.sort((x, y) => x.index - y.index);
-
   const title = document.createElement('h4');
   title.innerHTML = 'Today´s To Do';
   const input = document.createElement('input');
@@ -30,6 +29,11 @@ const display = (list) => {
     const elementList = document.createElement('li');
     const description = document.createElement('span');
     description.innerHTML = element.description;
+
+    description.addEventListener('click', () => {
+      editTask(description, element);
+    });
+
     const checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
     checkBox.id = element.index;
