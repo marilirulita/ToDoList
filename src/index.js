@@ -1,27 +1,32 @@
 import './style.css';
+import Task from './listTask.js';
 
 const list = [
-  {
-    description: 'Clean Room',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Wash Dishes',
-    completed: false,
-    index: 4,
-  },
-  {
-    description: 'Make Dinner',
-    completed: false,
-    index: 3,
-  },
-  {
-    description: 'first but last',
-    completed: false,
-    index: 1,
-  },
+  // {
+  //   description: 'Clean Room',
+  //   completed: false,
+  //   index: 2,
+  // },
+  // {
+  //   description: 'Wash Dishes',
+  //   completed: false,
+  //   index: 4,
+  // },
+  // {
+  //   description: 'Make Dinner',
+  //   completed: false,
+  //   index: 3,
+  // },
+  // {
+  //   description: 'first but last',
+  //   completed: false,
+  //   index: 1,
+  // },
 ];
+
+const newTask = new Task('First task', false, 1);
+list.push(newTask);
+console.log(list);
 
 function display() {
   list.sort((x, y) => x.index - y.index);
@@ -59,6 +64,7 @@ function display() {
   listElements.appendChild(button);
 
   const listPlacehold = document.getElementById('list-placeholder');
+  listPlacehold.innerHTML = '';
   listPlacehold.appendChild(listElements);
 }
 
