@@ -7,11 +7,20 @@ const deleteComplete = (list) => {
   updatePosition(list);
   display(list);
 }
+
+const deletElement = (list, element) => {
+  list.forEach(ele => {
+    if(ele.index === element.index) {
+      const indice = list.indexOf(ele);
+      list.splice(indice, 1);
+      updatePosition(list);
+      display(list);
+      console.log(list);
+    }
+  });
+}
   //     const local = window.localStorage.getItem('tasklist');
   //     const list = JSON.parse(local);
-        //    updatePosition(newList);
-    //   showItems(newList);
-    //   saveList(newList);
      
 const updatePosition = (newList) => {
   newList.forEach((task, id) => {
@@ -20,4 +29,4 @@ const updatePosition = (newList) => {
   });
 }
 
-export {deleteComplete as default};
+export {deleteComplete, deletElement};

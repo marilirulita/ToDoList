@@ -13,7 +13,5 @@ const add = (event, input, list) => {
 
 // //  const local = window.localStorage.getItem('tasklist');
 // //  tasksList = JSON.parse(local);  
-// //    saveList(tasksList);
-// //    updateCheck(tasksList);
 
 export { add as default };

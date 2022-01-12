@@ -1,7 +1,7 @@
 import './style.css';
 import Task from './listTask.js';
 import add from './addElement.js';
-import deleteComplete from './deleteElements';
+import {deleteComplete} from './deleteElements';
 import editTask from './editTask.js';
 
 let list = [];
@@ -31,7 +31,7 @@ const display = (list) => {
     description.innerHTML = element.description;
 
     description.addEventListener('click', () => {
-      editTask(description, element);
+      editTask(description, element, list);
     });
 
     const checkBox = document.createElement('input');

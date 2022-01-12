@@ -1,12 +1,18 @@
-const editTask = (description, element) => {
+import { deletElement} from './deleteElements.js';
+
+const editTask = (description, element, list) => {
   const taskInput = document.createElement('input');
   taskInput.type = 'text';
-  // const delet = document.createElement('input');//b
-  // delet.type = 'button';
-  // delet.value = 'delete';
+  const delet = document.createElement('input');
+  delet.type = 'button';
+  delet.value = 'delete';
+  delet.addEventListener('click', () => {
+    deletElement(list, element);
+  });
+
   taskInput.value = description.innerHTML;
   description.parentNode.replaceChild(taskInput, description);
-  // input.parentNode.appendChild(delet);
+  taskInput.parentNode.appendChild(delet);
   taskInput.focus();
 
   taskInput.addEventListener('keypress', (event) => {
@@ -16,7 +22,7 @@ const editTask = (description, element) => {
       taskInput.parentNode.replaceChild(description, taskInput);
       element.description = taskInput.value;
       console.log(element.description);
-  //     e.parentNode.removeChild(b);
+      description.parentNode.removeChild(delet);
   }
   });
 }
