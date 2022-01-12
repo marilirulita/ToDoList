@@ -1,4 +1,5 @@
 import { deletElement} from './deleteElements.js';
+import saveList from './saveLocal.js';
 
 const editTask = (description, element, list) => {
   const taskInput = document.createElement('input');
@@ -21,7 +22,8 @@ const editTask = (description, element, list) => {
       description.innerHTML = taskInput.value;
       taskInput.parentNode.replaceChild(description, taskInput);
       element.description = taskInput.value;
-      console.log(element.description);
+      saveList(list);
+      console.log(list);
       description.parentNode.removeChild(delet);
   }
   });

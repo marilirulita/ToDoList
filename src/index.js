@@ -1,10 +1,16 @@
 import './style.css';
-import Task from './listTask.js';
 import add from './addElement.js';
 import {deleteComplete} from './deleteElements';
 import editTask from './editTask.js';
 
-let list = [];
+window.onload = () => {
+  const local = window.localStorage.getItem('tasklist');
+  let list = [];
+  if (local != null) {
+    list = JSON.parse(local);
+  }
+  display(list);
+};
 
 const display = (list) => {
   const title = document.createElement('h4');
@@ -62,7 +68,5 @@ const display = (list) => {
   listPlacehold.innerHTML = '';
   listPlacehold.appendChild(listElements);
 }
-
-display(list);
 
 export { display as default };

@@ -1,5 +1,6 @@
 import Task from "./listTask";
 import display from './index.js';
+import saveList from './saveLocal.js';
 
 const add = (event, input, list) => {
   if (event.key === 'Enter' && input.value !== '') {
@@ -8,6 +9,7 @@ const add = (event, input, list) => {
     console.log(list);
     input.value = '';
     display(list);
+    saveList(list);
   }
 } 
 

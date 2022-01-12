@@ -1,10 +1,12 @@
 import display from './index.js';
+import saveList from './saveLocal.js';
 
 const deleteComplete = (list) => {
   const newList = list.filter((task) => task.completed === false);
   console.log(newList);
   list = newList;
   updatePosition(list);
+  saveList(list);
   display(list);
 }
 
@@ -14,6 +16,7 @@ const deletElement = (list, element) => {
       const indice = list.indexOf(ele);
       list.splice(indice, 1);
       updatePosition(list);
+      saveList(list);
       display(list);
       console.log(list);
     }
