@@ -1,4 +1,4 @@
-import display from './index.js';
+import display from './display.js';
 import saveList from './saveLocal.js';
 
 const deleteComplete = (list) => {
@@ -22,8 +22,6 @@ const deletElement = (list, element) => {
     }
   });
 }
-  //     const local = window.localStorage.getItem('tasklist');
-  //     const list = JSON.parse(local);
      
 const updatePosition = (newList) => {
   newList.forEach((task, id) => {

@@ -1,5 +1,5 @@
 import Task from "./listTask";
-import display from './index.js';
+import display from './display.js';
 import saveList from './saveLocal.js';
 
 const add = (event, input, list) => {
@@ -11,9 +11,6 @@ const add = (event, input, list) => {
     display(list);
     saveList(list);
   }
-} 
-
-// //  const local = window.localStorage.getItem('tasklist');
-// //  tasksList = JSON.parse(local);  
+}  
 
 export { add as default };
