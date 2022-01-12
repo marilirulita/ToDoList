@@ -4,10 +4,6 @@ import add from './addElement.js';
 
 const list = [];
 
-const newTask = new Task('First task', false, 0);
-list.push(newTask);
-console.log(list);
-
 const display = () => {
   //list.sort((x, y) => x.index - y.index);
 
@@ -35,6 +31,11 @@ const display = () => {
     description.innerHTML = element.description;
     const checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
+    checkBox.id = element.index;
+    checkBox.onchange = function () {
+      element.completed = this.checked;
+    };
+
     elementList.classList.add('elementList');
     elementList.appendChild(checkBox);
     elementList.appendChild(description);
