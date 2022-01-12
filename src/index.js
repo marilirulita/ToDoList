@@ -1,35 +1,15 @@
 import './style.css';
 import Task from './listTask.js';
+import add from './addElement.js';
 
-const list = [
-  // {
-  //   description: 'Clean Room',
-  //   completed: false,
-  //   index: 2,
-  // },
-  // {
-  //   description: 'Wash Dishes',
-  //   completed: false,
-  //   index: 4,
-  // },
-  // {
-  //   description: 'Make Dinner',
-  //   completed: false,
-  //   index: 3,
-  // },
-  // {
-  //   description: 'first but last',
-  //   completed: false,
-  //   index: 1,
-  // },
-];
+const list = [];
 
-const newTask = new Task('First task', false, 1);
+const newTask = new Task('First task', false, 0);
 list.push(newTask);
 console.log(list);
 
-function display() {
-  list.sort((x, y) => x.index - y.index);
+const display = () => {
+  //list.sort((x, y) => x.index - y.index);
 
   const title = document.createElement('h4');
   title.innerHTML = 'Today´s To Do';
@@ -38,6 +18,11 @@ function display() {
   input.name = 'task';
   input.id = 'newTask';
   input.placeholder = 'Add to your list...';
+
+  input.addEventListener('keypress', (event) => {
+    add(event, input, list);
+  });
+
   const listElements = document.createElement('ul');
   listElements.classList.add('listElements');
 
@@ -61,6 +46,7 @@ function display() {
   button.classList.add('delete-button');
   button.innerHTML = 'Clear all completed';
   button.type = 'button';
+  button.id = 'delete-button';
   listElements.appendChild(button);
 
   const listPlacehold = document.getElementById('list-placeholder');
@@ -69,3 +55,5 @@ function display() {
 }
 
 display();
+
+export { display as default };
