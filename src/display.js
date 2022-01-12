@@ -1,5 +1,6 @@
+/* eslint-disable import/no-cycle */
 import add from './addElement.js';
-import {deleteComplete} from './deleteElements';
+import { deleteComplete } from './deleteElements.js';
 import editTask from './editTask.js';
 
 const display = (list) => {
@@ -33,7 +34,7 @@ const display = (list) => {
     const checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
     checkBox.id = element.index;
-    checkBox.onchange = function () {
+    checkBox.onchange = function status() {
       element.completed = this.checked;
     };
 
@@ -57,6 +58,6 @@ const display = (list) => {
   const listPlacehold = document.getElementById('list-placeholder');
   listPlacehold.innerHTML = '';
   listPlacehold.appendChild(listElements);
-}
+};
 
 export { display as default };
