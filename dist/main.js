@@ -110,13 +110,73 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/addElement.js":
+/*!***************************!*\
+  !*** ./src/addElement.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ add)\n/* harmony export */ });\n/* harmony import */ var _listTask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./listTask */ \"./src/listTask.js\");\n/* harmony import */ var _display_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./display.js */ \"./src/display.js\");\n/* harmony import */ var _saveLocal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./saveLocal.js */ \"./src/saveLocal.js\");\n\r\n\r\n\r\n\r\nconst add = (event, input, list) => {\r\n  if (event.key === 'Enter' && input.value !== '') {\r\n    const newTask = new _listTask__WEBPACK_IMPORTED_MODULE_0__[\"default\"](input.value, false, list.length);\r\n    list.push(newTask);\r\n    console.log(list);\r\n    input.value = '';\r\n    (0,_display_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(list);\r\n    (0,_saveLocal_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(list);\r\n  }\r\n}  \r\n\r\n\n\n//# sourceURL=webpack://todolist/./src/addElement.js?");
+
+/***/ }),
+
+/***/ "./src/deleteElements.js":
+/*!*******************************!*\
+  !*** ./src/deleteElements.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"deleteComplete\": () => (/* binding */ deleteComplete),\n/* harmony export */   \"deletElement\": () => (/* binding */ deletElement)\n/* harmony export */ });\n/* harmony import */ var _display_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./display.js */ \"./src/display.js\");\n/* harmony import */ var _saveLocal_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./saveLocal.js */ \"./src/saveLocal.js\");\n\r\n\r\n\r\nconst deleteComplete = (list) => {\r\n  const newList = list.filter((task) => task.completed === false);\r\n  console.log(newList);\r\n  list = newList;\r\n  updatePosition(list);\r\n  (0,_saveLocal_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(list);\r\n  (0,_display_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(list);\r\n}\r\n\r\nconst deletElement = (list, element) => {\r\n  list.forEach(ele => {\r\n    if(ele.index === element.index) {\r\n      const indice = list.indexOf(ele);\r\n      list.splice(indice, 1);\r\n      updatePosition(list);\r\n      (0,_saveLocal_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(list);\r\n      (0,_display_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(list);\r\n      console.log(list);\r\n    }\r\n  });\r\n}\r\n     \r\nconst updatePosition = (newList) => {\r\n  newList.forEach((task, id) => {\r\n    console.log(id);\r\n    task.index = id;\r\n  });\r\n}\r\n\r\n\n\n//# sourceURL=webpack://todolist/./src/deleteElements.js?");
+
+/***/ }),
+
+/***/ "./src/display.js":
+/*!************************!*\
+  !*** ./src/display.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ display)\n/* harmony export */ });\n/* harmony import */ var _addElement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addElement.js */ \"./src/addElement.js\");\n/* harmony import */ var _deleteElements__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./deleteElements */ \"./src/deleteElements.js\");\n/* harmony import */ var _editTask_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editTask.js */ \"./src/editTask.js\");\n\r\n\r\n\r\n\r\nconst display = (list) => {\r\n  const title = document.createElement('h4');\r\n  title.innerHTML = 'Today´s To Do';\r\n  const input = document.createElement('input');\r\n  input.type = 'text';\r\n  input.name = 'task';\r\n  input.id = 'newTask';\r\n  input.placeholder = 'Add to your list...';\r\n\r\n  input.addEventListener('keypress', (event) => {\r\n    (0,_addElement_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(event, input, list);\r\n  });\r\n\r\n  const listElements = document.createElement('ul');\r\n  listElements.classList.add('listElements');\r\n\r\n  listElements.appendChild(title);\r\n  listElements.appendChild(input);\r\n\r\n  list.forEach((element) => {\r\n    const elementList = document.createElement('li');\r\n    const description = document.createElement('span');\r\n    description.innerHTML = element.description;\r\n\r\n    description.addEventListener('click', () => {\r\n      (0,_editTask_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(description, element, list);\r\n    });\r\n\r\n    const checkBox = document.createElement('input');\r\n    checkBox.type = 'checkbox';\r\n    checkBox.id = element.index;\r\n    checkBox.onchange = function () {\r\n      element.completed = this.checked;\r\n    };\r\n\r\n    elementList.classList.add('elementList');\r\n    elementList.appendChild(checkBox);\r\n    elementList.appendChild(description);\r\n    listElements.appendChild(elementList);\r\n  });\r\n\r\n  const button = document.createElement('button');\r\n\r\n  button.classList.add('delete-button');\r\n  button.innerHTML = 'Clear all completed';\r\n  button.type = 'button';\r\n  button.id = 'delete-button';\r\n\r\n  button.addEventListener('click', () => (0,_deleteElements__WEBPACK_IMPORTED_MODULE_1__.deleteComplete)(list));\r\n\r\n  listElements.appendChild(button);\r\n\r\n  const listPlacehold = document.getElementById('list-placeholder');\r\n  listPlacehold.innerHTML = '';\r\n  listPlacehold.appendChild(listElements);\r\n}\r\n\r\n\n\n//# sourceURL=webpack://todolist/./src/display.js?");
+
+/***/ }),
+
+/***/ "./src/editTask.js":
+/*!*************************!*\
+  !*** ./src/editTask.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ editTask)\n/* harmony export */ });\n/* harmony import */ var _deleteElements_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./deleteElements.js */ \"./src/deleteElements.js\");\n/* harmony import */ var _saveLocal_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./saveLocal.js */ \"./src/saveLocal.js\");\n\r\n\r\n\r\nconst editTask = (description, element, list) => {\r\n  const taskInput = document.createElement('input');\r\n  taskInput.type = 'text';\r\n  const delet = document.createElement('input');\r\n  delet.type = 'button';\r\n  delet.value = 'delete';\r\n  delet.addEventListener('click', () => {\r\n    (0,_deleteElements_js__WEBPACK_IMPORTED_MODULE_0__.deletElement)(list, element);\r\n  });\r\n\r\n  taskInput.value = description.innerHTML;\r\n  description.parentNode.replaceChild(taskInput, description);\r\n  taskInput.parentNode.appendChild(delet);\r\n  taskInput.focus();\r\n\r\n  taskInput.addEventListener('keypress', (event) => {\r\n    if (event.key === 'Enter') {\r\n      console.log('you press enter!');\r\n      description.innerHTML = taskInput.value;\r\n      taskInput.parentNode.replaceChild(description, taskInput);\r\n      element.description = taskInput.value;\r\n      (0,_saveLocal_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(list);\r\n      console.log(list);\r\n      description.parentNode.removeChild(delet);\r\n  }\r\n  });\r\n}\r\n\r\n\n\n//# sourceURL=webpack://todolist/./src/editTask.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\r\n\r\nconst list = [\r\n  {\r\n    description: 'Clean Room',\r\n    completed: false,\r\n    index: 2,\r\n  },\r\n  {\r\n    description: 'Wash Dishes',\r\n    completed: false,\r\n    index: 4,\r\n  },\r\n  {\r\n    description: 'Make Dinner',\r\n    completed: false,\r\n    index: 3,\r\n  },\r\n  {\r\n    description: 'first but last',\r\n    completed: false,\r\n    index: 1,\r\n  },\r\n];\r\n\r\nfunction display() {\r\n  list.sort((x, y) => x.index - y.index);\r\n\r\n  const title = document.createElement('h4');\r\n  title.innerHTML = 'Today´s To Do';\r\n  const input = document.createElement('input');\r\n  input.type = 'text';\r\n  input.name = 'task';\r\n  input.id = 'newTask';\r\n  input.placeholder = 'Add to your list...';\r\n  const listElements = document.createElement('ul');\r\n  listElements.classList.add('listElements');\r\n\r\n  listElements.appendChild(title);\r\n  listElements.appendChild(input);\r\n\r\n  list.forEach((element) => {\r\n    const elementList = document.createElement('li');\r\n    const description = document.createElement('span');\r\n    description.innerHTML = element.description;\r\n    const checkBox = document.createElement('input');\r\n    checkBox.type = 'checkbox';\r\n    elementList.classList.add('elementList');\r\n    elementList.appendChild(checkBox);\r\n    elementList.appendChild(description);\r\n    listElements.appendChild(elementList);\r\n  });\r\n\r\n  const button = document.createElement('button');\r\n\r\n  button.classList.add('delete-button');\r\n  button.innerHTML = 'Clear all completed';\r\n  button.type = 'button';\r\n  listElements.appendChild(button);\r\n\r\n  const listPlacehold = document.getElementById('list-placeholder');\r\n  listPlacehold.appendChild(listElements);\r\n}\r\n\r\ndisplay();\r\n\n\n//# sourceURL=webpack://todolist/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _display_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./display.js */ \"./src/display.js\");\n\r\n\r\n\r\nwindow.onload = () => {\r\n  const local = window.localStorage.getItem('tasklist');\r\n  let list = [];\r\n  if (local != null) {\r\n    list = JSON.parse(local);\r\n  }\r\n  (0,_display_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(list);\r\n};\r\n\n\n//# sourceURL=webpack://todolist/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/listTask.js":
+/*!*************************!*\
+  !*** ./src/listTask.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Task)\n/* harmony export */ });\nclass Task {\r\n  constructor(description, completed, index) {\r\n    this.description = description;\r\n    this.completed = completed;\r\n    this.index = index;\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack://todolist/./src/listTask.js?");
+
+/***/ }),
+
+/***/ "./src/saveLocal.js":
+/*!**************************!*\
+  !*** ./src/saveLocal.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ saveList)\n/* harmony export */ });\nconst saveList = (list) => {\r\n  console.log('you save a list');\r\n  window.localStorage.setItem('tasklist', JSON.stringify(list));\r\n};\r\n\r\n\n\n//# sourceURL=webpack://todolist/./src/saveLocal.js?");
 
 /***/ })
 
