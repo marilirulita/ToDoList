@@ -7,7 +7,7 @@ const add = (event, input, list) => {
     list.push(newTask);
     console.log(list);
     input.value = '';
-    display();
+    display(list);
   }
 } 
 

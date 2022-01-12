@@ -1,10 +1,11 @@
 import './style.css';
 import Task from './listTask.js';
 import add from './addElement.js';
+import deleteComplete from './deleteElements';
 
-const list = [];
+let list = [];
 
-const display = () => {
+const display = (list) => {
   //list.sort((x, y) => x.index - y.index);
 
   const title = document.createElement('h4');
@@ -48,6 +49,9 @@ const display = () => {
   button.innerHTML = 'Clear all completed';
   button.type = 'button';
   button.id = 'delete-button';
+
+  button.addEventListener('click', () => deleteComplete(list));
+
   listElements.appendChild(button);
 
   const listPlacehold = document.getElementById('list-placeholder');
@@ -55,6 +59,6 @@ const display = () => {
   listPlacehold.appendChild(listElements);
 }
 
-display();
+display(list);
 
 export { display as default };
