@@ -77,9 +77,13 @@ const display = (list) => {
     checkBox.id = element.index;
     checkBox.checked = element.completed;
     checkBox.addEventListener('change', () => {
-      checkStatus(element, checkBox);
+      checkStatus(element, checkBox, description);
       saveList(list);
     });
+
+    if (checkBox.checked) {
+      description.classList.add('complete');
+    }
 
     elementList.classList.add('elementList');
     elementList.appendChild(checkBox);
