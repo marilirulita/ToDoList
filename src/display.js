@@ -75,8 +75,10 @@ const display = (list) => {
     const checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
     checkBox.id = element.index;
+    checkBox.checked = element.completed;
     checkBox.addEventListener('change', () => {
       checkStatus(element, checkBox);
+      saveList(list);
     });
 
     elementList.classList.add('elementList');
