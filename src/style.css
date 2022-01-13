@@ -55,3 +55,8 @@ span {
   color: rgb(110, 109, 109);
   font-size: large;
 }
+
+.complete {
+  text-decoration-line: line-through;
+  color: darkgray;
+}

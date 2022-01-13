@@ -1,5 +1,6 @@
 import Task from './listTask.js';
 import saveList from './saveLocal.js';
+import { completed, checkStatus } from './removeCompleted.js';
 
 const updatePosition = (newList) => {
   newList.forEach((task, id) => {
@@ -74,9 +75,15 @@ const display = (list) => {
     const checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
     checkBox.id = element.index;
-    checkBox.onchange = function status() {
-      element.completed = this.checked;
-    };
+    checkBox.checked = element.completed;
+    checkBox.addEventListener('change', () => {
+      checkStatus(element, checkBox, description);
+      saveList(list);
+    });
+
+    if (checkBox.checked) {
+      description.classList.add('complete');
+    }
 
     elementList.classList.add('elementList');
     elementList.appendChild(checkBox);
@@ -92,11 +99,10 @@ const display = (list) => {
   button.id = 'delete-button';
 
   button.addEventListener('click', () => {
-    const newList = list.filter((task) => task.completed === false);
-    list = newList;
-    updatePosition(list);
-    saveList(list);
-    display(list);
+    const newList = completed(list);
+    updatePosition(newList);
+    saveList(newList);
+    display(newList);
   });
 
   listElements.appendChild(button);
