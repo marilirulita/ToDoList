@@ -8,6 +8,9 @@ Build a simple HTML list of To Do tasks that will be built using webpack and ser
 - Java Script
 - Webpack
 
+## Live Demo
+
+[Live Demo Link](https://marilirulita.github.io/ToDoList/)
 
 ## Getting Started
 
