@@ -1,7 +1,7 @@
 {
   "name": "todolist",
   "version": "1.0.0",
-  "description": "![](https://img.shields.io/badge/Microverse-blueviolet)",
+  "description": "Build a simple HTML list of To Do tasks that will be built using webpack and served by a webpack dev server",
   "private": true,
   "scripts": {
     "predeploy": "npm run build",
