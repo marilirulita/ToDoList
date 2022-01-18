@@ -8,7 +8,6 @@ module.exports = {
     server: {
       type: 'https',
     },
-    static: './dist',
   },
   plugins: [
     new HtmlWebpackPlugin({
