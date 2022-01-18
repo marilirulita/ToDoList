@@ -5,7 +5,10 @@ module.exports = {
   mode: 'development',
   entry: './src/index.js',
   devServer: {
-    https: true,
+    server: {
+      type: 'https',
+    },
+    static: './dist',
   },
   plugins: [
     new HtmlWebpackPlugin({
