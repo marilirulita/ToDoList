@@ -1,5 +1,5 @@
 import './style.css';
-import display from './display.js';
+import {display} from './display.js';
 
 window.onload = () => {
   const local = window.localStorage.getItem('tasklist');

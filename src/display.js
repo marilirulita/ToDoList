@@ -8,6 +8,21 @@ const updatePosition = (newList) => {
   });
 };
 
+const addItem = (input, list) => {
+  const newTask = new Task(input.value, false, list.length);
+  list.push(newTask);
+  input.value = '';
+}
+
+const removeItem = (list, element) => {
+  list.forEach((ele) => {
+    if (ele.index === element.index) {
+      const indice = list.indexOf(ele);
+      list.splice(indice, 1);
+    }
+  });
+}
+
 const display = (list) => {
   const title = document.createElement('h4');
   title.innerHTML = 'Today´s To Do';
@@ -19,9 +34,7 @@ const display = (list) => {
 
   input.addEventListener('keypress', (event) => {
     if (event.key === 'Enter' && input.value !== '') {
-      const newTask = new Task(input.value, false, list.length);
-      list.push(newTask);
-      input.value = '';
+      addItem(input, list);
       display(list);
       saveList(list);
     }
@@ -45,15 +58,10 @@ const display = (list) => {
       delet.type = 'button';
       delet.value = 'delete';
       delet.addEventListener('click', () => {
-        list.forEach((ele) => {
-          if (ele.index === element.index) {
-            const indice = list.indexOf(ele);
-            list.splice(indice, 1);
-            updatePosition(list);
-            saveList(list);
-            display(list);
-          }
-        });
+        removeItem(list, element);
+        updatePosition(list);
+        saveList(list);
+        display(list);
       });
 
       taskInput.value = description.innerHTML;
@@ -112,4 +120,4 @@ const display = (list) => {
   listPlacehold.appendChild(listElements);
 };
 
-export { display as default };
+export { display, addItem, removeItem };
