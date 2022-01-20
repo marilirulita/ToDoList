@@ -49,6 +49,5 @@ describe('Testing add and remove', () => {
   test('Test remove completed task from list', () => {
     const newList = completed(list);
     expect(newList).toHaveLength(2);
-  })
-  
+  });
 });

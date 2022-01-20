@@ -12,7 +12,7 @@ const addItem = (input, list) => {
   const newTask = new Task(input.value, false, list.length);
   list.push(newTask);
   input.value = '';
-}
+};
 
 const removeItem = (list, element) => {
   list.forEach((ele) => {
@@ -21,7 +21,7 @@ const removeItem = (list, element) => {
       list.splice(indice, 1);
     }
   });
-}
+};
 
 const display = (list) => {
   const title = document.createElement('h4');
