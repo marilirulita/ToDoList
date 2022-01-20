@@ -23,7 +23,7 @@ const list = [
   },
 ];
 
-describe('Testing add and remove', () => {
+describe ('Testing add and remove', () => {
   test('empty list', () => {
     const emptyList = [];
     addItem(input, emptyList);
@@ -49,6 +49,5 @@ describe('Testing add and remove', () => {
   test('Test remove completed task from list', () => {
     const newList = completed(list);
     expect(newList).toHaveLength(2);
-  })
-  
+  }),
 });
