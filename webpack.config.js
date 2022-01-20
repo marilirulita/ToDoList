@@ -5,6 +5,7 @@ module.exports = {
   mode: 'development',
   entry: './src/index.js',
   devServer: {
+    static: './dist',
     server: {
       type: 'https',
     },
