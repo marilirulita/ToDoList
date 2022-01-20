@@ -34,5 +34,17 @@ describe('Testing add and remove', () => {
     addItem(input, list);
     expect(list).toHaveLength(4);
   });
+
+  test('Test remove an item from list', () => {
+    const selecElem = {
+      description: 'Cook for the dinner at 6pm',
+      completed: false,
+      index: 3,
+    };
+
+    removeItem(list, selecElem);
+    expect(list).toHaveLength(3);
+  });
+
   
 });
