@@ -30,5 +30,9 @@ describe('Testing add and remove', () => {
     expect(emptyList).toHaveLength(1);
   });
 
+  test('add new item to list', () => {
+    addItem(input, list);
+    expect(list).toHaveLength(4);
+  });
   
 });
