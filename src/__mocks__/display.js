@@ -1,4 +1,4 @@
-import Task from './listTask.js';
+import Task from '../listTask.js';
 import saveList from './saveLocal.js';
 import { completed, checkStatus } from './removeCompleted.js';
 
