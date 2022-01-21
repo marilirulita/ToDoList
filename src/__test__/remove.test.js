@@ -1,9 +1,5 @@
-import { addItem, removeItem } from './display.js';
-import { completed } from './removeCompleted.js';
-
-const input = {
-  value: 'Cook for the dinner at 6pm',
-};
+import { completed } from '../removeCompleted.js';
+import { removeItem } from '../display.js';
 
 const list = [
   {
@@ -23,18 +19,7 @@ const list = [
   },
 ];
 
-describe ('Testing add and remove', () => {
-  test('empty list', () => {
-    const emptyList = [];
-    addItem(input, emptyList);
-    expect(emptyList).toHaveLength(1);
-  });
-
-  test('add new item to list', () => {
-    addItem(input, list);
-    expect(list).toHaveLength(4);
-  });
-
+describe('Testing remove', () => {
   test('Test remove an item from list', () => {
     const selecElem = {
       description: 'Cook for the dinner at 6pm',
@@ -49,5 +34,17 @@ describe ('Testing add and remove', () => {
   test('Test remove completed task from list', () => {
     const newList = completed(list);
     expect(newList).toHaveLength(2);
-  }),
+  });
+
+  test('DOM..remove', () => {
+    document.body.innerHTML = `<ul id="container">
+  <li><div class="flex"><input type="checkbox" class="checkbox">
+  <input class="textarea" id ="TaskID" type="text"></div></li>
+  </ul>`;
+
+    const remove = document.getElementById('TaskID');
+    const newList = completed(list);
+    removeItem(list, remove, list[0]);
+    expect(newList).toHaveLength(2);
+  });
 });
