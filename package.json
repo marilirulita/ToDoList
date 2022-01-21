@@ -42,7 +42,7 @@
     "jsdom": "^19.0.0",
     "lodash": "^4.17.21"
   },
-  "jest":{
+  "jest": {
     "testEnvironment": "jsdom"
-}
+  }
 }
