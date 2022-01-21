@@ -1,4 +1,4 @@
-import { addItem } from '../display.js';
+import { addItem } from '../__mocks__/display.js';
 
 const input = {
   value: 'Cook for the dinner at 6pm',

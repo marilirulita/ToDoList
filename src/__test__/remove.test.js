@@ -1,5 +1,5 @@
-import { completed } from '../removeCompleted.js';
-import { removeItem } from '../display.js';
+import { completed } from '../__mocks__/removeCompleted.js';
+import { removeItem } from '../__mocks__/display.js';
 
 const list = [
   {
