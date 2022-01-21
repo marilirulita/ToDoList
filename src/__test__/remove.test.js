@@ -3,17 +3,17 @@ import { removeItem } from '../display.js';
 
 const list = [
   {
-    description: 'Finish project Microverse today',
+    description: 'Finish part 2',
     completed: true,
     index: 0,
   },
   {
-    description: 'Meeting at 5 pm',
+    description: 'Meeting at 8 am',
     completed: false,
     index: 1,
   },
   {
-    description: 'Go to the supermarket',
+    description: 'Hope approved at first strike',
     completed: false,
     index: 2,
   },
@@ -22,7 +22,7 @@ const list = [
 describe('Testing remove', () => {
   test('Test remove an item from list', () => {
     const selecElem = {
-      description: 'Cook for the dinner at 6pm',
+      description: 'Breakfast at 7am',
       completed: false,
       index: 3,
     };
