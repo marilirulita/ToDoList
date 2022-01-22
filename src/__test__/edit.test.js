@@ -1,4 +1,5 @@
-import { CheckLocal, completed, checkStatus } from '../__mocks__/removeCompleted.js';
+import { CheckLocal, completed } from '../__mocks__/removeCompleted.js';
+import { changeTask } from '../__mocks__/display.js';
 
 const newList = new CheckLocal();
 
@@ -30,12 +31,18 @@ newList.list[2] = { description: 'Hope approved at first strike', completed: fal
 //   expect(list[0].complete).toBe(true);
 // });
 
-test('true', () => {
+test('Change complete: false for true', () => {
   newList.doneTask(0);
   expect(newList.list[0].completed).toBe(true);
 });
 
-test('igual', () => {
+test('Delete task completed: true', () => {
   const listNew = completed(list);
   expect(listNew).toHaveLength(2);
+});
+
+test('Edit value of description', () => {
+  const newText = { value: 'Project Done' };
+  changeTask(newList.list[0], newText);
+  expect(newList.list[0].description).toEqual(newText.value);
 });

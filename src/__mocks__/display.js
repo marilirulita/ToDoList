@@ -8,6 +8,10 @@ const updatePosition = (newList) => {
   });
 };
 
+const changeTask = (element, text) => {
+  element.description = text.value;
+};
+
 const addItem = (input, list) => {
   const newTask = new Task(input.value, false, list.length);
   list.push(newTask);
@@ -120,4 +124,9 @@ const display = (list) => {
   listPlacehold.appendChild(listElements);
 };
 
-export { display, addItem, removeItem };
+export {
+  display,
+  addItem,
+  removeItem,
+  changeTask,
+};
