@@ -43,6 +43,9 @@ test('Delete task completed: true', () => {
 
 test('Edit value of description', () => {
   const newText = { value: 'Project Done' };
-  changeTask(newList.list[0], newText);
-  expect(newList.list[0].description).toEqual(newText.value);
+  const arrList = list[0];
+  // changeTask(newList.list[0], newText);
+  // expect(newList.list[0].description).toEqual(newText.value);
+  changeTask(arrList, newText);
+  expect(arrList.description).toEqual(newText.value);
 });
