@@ -8,6 +8,10 @@ const updatePosition = (newList) => {
   });
 };
 
+const changeTask = (element, text) => {
+  element.description = text.value;
+};
+
 const addItem = (input, list) => {
   const newTask = new Task(input.value, false, list.length);
   list.push(newTask);
@@ -21,6 +25,12 @@ const removeItem = (list, element) => {
       list.splice(indice, 1);
     }
   });
+};
+
+const editItem = (description, taskInput, element) => {
+  description.innerHTML = taskInput.value;
+  taskInput.parentNode.replaceChild(description, taskInput);
+  element.description = taskInput.value;
 };
 
 const display = (list) => {
@@ -120,4 +130,10 @@ const display = (list) => {
   listPlacehold.appendChild(listElements);
 };
 
-export { display, addItem, removeItem };
+export {
+  display,
+  addItem,
+  removeItem,
+  changeTask,
+  editItem,
+};

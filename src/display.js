@@ -23,6 +23,12 @@ const removeItem = (list, element) => {
   });
 };
 
+const editItem = (description, taskInput, element) => {
+  description.innerHTML = taskInput.value;
+  taskInput.parentNode.replaceChild(description, taskInput);
+  element.description = taskInput.value;
+};
+
 const display = (list) => {
   const title = document.createElement('h4');
   title.innerHTML = 'Today´s To Do';
@@ -71,9 +77,7 @@ const display = (list) => {
 
       taskInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
-          description.innerHTML = taskInput.value;
-          taskInput.parentNode.replaceChild(description, taskInput);
-          element.description = taskInput.value;
+          editItem(description, taskInput, element);
           saveList(list);
           description.parentNode.removeChild(delet);
         }
@@ -120,4 +124,9 @@ const display = (list) => {
   listPlacehold.appendChild(listElements);
 };
 
-export { display, addItem, removeItem };
+export {
+  display,
+  addItem,
+  removeItem,
+  editItem,
+};
