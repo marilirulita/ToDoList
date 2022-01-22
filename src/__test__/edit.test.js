@@ -26,7 +26,7 @@ describe('Testing change status', () => {
     };
     const item = list[1];
     const span = false;
-  
+
     item.completed = checkedBox.checked;
     checkStatus(item, checkedBox, span);
     expect(list[1].completed).toBe(true);
@@ -47,13 +47,13 @@ describe('Testing edit elements', () => {
     changeTask(arrList, newText);
     expect(arrList.description).toEqual(newText.value);
   });
-  
+
   test('Expect test to be edited', () => {
     const eleEdit = list[2];
     const span = {
       innerHTML: eleEdit.description,
     };
-  
+
     const newInput = {
       value: 'Visit my parents',
       parentNode: {
@@ -67,14 +67,8 @@ describe('Testing edit elements', () => {
         },
       },
     };
-  
+
     editItem(span, newInput, eleEdit);
     expect(list[2].description).toBe(newInput.value);
-  });  
+  });
 });
-
-
-
-
-
-
