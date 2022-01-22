@@ -19,50 +19,62 @@ const list = [
   },
 ];
 
-test('Change status using checkbox: false to true', () => {
-  const checkedBox = {
-    checked: true,
-  };
-  const item = list[1];
-  const span = false;
-
-  item.completed = checkedBox.checked;
-  checkStatus(item, checkedBox, span);
-  expect(list[1].completed).toBe(true);
+describe('Testing change status', () => {
+  test('Change status using checkbox: false to true', () => {
+    const checkedBox = {
+      checked: true,
+    };
+    const item = list[1];
+    const span = false;
+  
+    item.completed = checkedBox.checked;
+    checkStatus(item, checkedBox, span);
+    expect(list[1].completed).toBe(true);
+  });
 });
 
-test('Delete task completed: true', () => {
-  const listNew = completed(list);
-  expect(listNew).toHaveLength(2);
+describe('Testing remove completed tasks', () => {
+  test('Delete task completed: true', () => {
+    const listNew = completed(list);
+    expect(listNew).toHaveLength(2);
+  });
 });
 
-test('Edit value of description', () => {
-  const newText = { value: 'Project Done' };
-  const arrList = list[0];
-  changeTask(arrList, newText);
-  expect(arrList.description).toEqual(newText.value);
-});
-
-test('Expect test to be edited', () => {
-  const eleEdit = list[2];
-  const span = {
-    innerHTML: eleEdit.description,
-  };
-
-  const newInput = {
-    value: 'Visit my parents',
-    parentNode: {
-      replaceChild(newChild, actualChild) {
-        const parentNode = {
-          child: newInput,
-        };
-        if (parentNode.child === actualChild) {
-          parentNode.child = newChild;
-        }
+describe('Testing edit elements', () => {
+  test('Edit value of description', () => {
+    const newText = { value: 'Project Done' };
+    const arrList = list[0];
+    changeTask(arrList, newText);
+    expect(arrList.description).toEqual(newText.value);
+  });
+  
+  test('Expect test to be edited', () => {
+    const eleEdit = list[2];
+    const span = {
+      innerHTML: eleEdit.description,
+    };
+  
+    const newInput = {
+      value: 'Visit my parents',
+      parentNode: {
+        replaceChild(newChild, actualChild) {
+          const parentNode = {
+            child: newInput,
+          };
+          if (parentNode.child === actualChild) {
+            parentNode.child = newChild;
+          }
+        },
       },
-    },
-  };
-
-  editItem(span, newInput, eleEdit);
-  expect(list[2].description).toBe(newInput.value);
+    };
+  
+    editItem(span, newInput, eleEdit);
+    expect(list[2].description).toBe(newInput.value);
+  });  
 });
+
+
+
+
+
+
