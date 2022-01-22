@@ -1,5 +1,7 @@
 import { CheckLocal, completed } from '../__mocks__/removeCompleted.js';
 import { changeTask } from '../__mocks__/display.js';
+import {completed, checkStatus} from '../removeCompleted.js';
+import {editItem} from '../display.js';
 
 const newList = new CheckLocal();
 
@@ -25,11 +27,17 @@ newList.list[0] = { description: 'Finish part 2', completed: false, index: 0 };
 newList.list[1] = { description: 'Meeting at 8 am', completed: false, index: 1 };
 newList.list[2] = { description: 'Hope approved at first strike', completed: false, index: 2 };
 
-// test('true', () => {
-//   const checked = document.getElementById('0');
-//   checkStatus(list[0], list);
-//   expect(list[0].complete).toBe(true);
-// });
+test('Change completed status using checkbox', () => {
+  const checkedBox = {
+    checked: true
+  }
+  const item = list[1];
+  const span = false;
+
+  item.completed = checkedBox.checked;
+  checkStatus(item, checkedBox, span);
+  expect(list[1].completed).toBe(true);
+});
 
 test('Change complete: false for true', () => {
   newList.doneTask(0);
@@ -48,4 +56,30 @@ test('Edit value of description', () => {
   // expect(newList.list[0].description).toEqual(newText.value);
   changeTask(arrList, newText);
   expect(arrList.description).toEqual(newText.value);
+});
+
+
+test('Expect test to be edited', () => {
+  const eleEdit = list[2];
+  const span = {
+    innerHTML: eleEdit.description,
+  }
+
+  const newInput = {
+    value: "Visit my parents",
+    parentNode: {
+      replaceChild: function(newChild, actualChild) {
+        if (parentNode.child === actualChild) {
+          parentNode.child = newChild;
+        }
+      }
+    }
+  }
+  const parentNode = {
+    child: newInput,
+  }
+
+  editItem(span, newInput, eleEdit);
+  console.log(list);
+  expect(list[2].description).toBe(newInput.value);
 });
