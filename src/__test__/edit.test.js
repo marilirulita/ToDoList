@@ -1,9 +1,5 @@
-import { CheckLocal, completed } from '../__mocks__/removeCompleted.js';
-import { changeTask } from '../__mocks__/display.js';
-import {completed, checkStatus} from '../removeCompleted.js';
-import {editItem} from '../display.js';
-
-const newList = new CheckLocal();
+import { completed, checkStatus } from '../__mocks__/removeCompleted.js';
+import { changeTask, editItem } from '../__mocks__/display.js';
 
 const list = [
   {
@@ -23,11 +19,7 @@ const list = [
   },
 ];
 
-newList.list[0] = { description: 'Finish part 2', completed: false, index: 0 };
-newList.list[1] = { description: 'Meeting at 8 am', completed: false, index: 1 };
-newList.list[2] = { description: 'Hope approved at first strike', completed: false, index: 2 };
-
-test('Change completed status using checkbox', () => {
+test('Change status using checkbox: false to true', () => {
   const checkedBox = {
     checked: true
   }
@@ -39,9 +31,11 @@ test('Change completed status using checkbox', () => {
   expect(list[1].completed).toBe(true);
 });
 
-test('Change complete: false for true', () => {
-  newList.doneTask(0);
-  expect(newList.list[0].completed).toBe(true);
+test('Edit value of description', () => {
+  const newText = { value: 'Project Done' };
+  const arrList = list[0];
+  changeTask(arrList, newText);
+  expect(arrList.description).toEqual(newText.value);
 });
 
 test('Delete task completed: true', () => {
@@ -49,37 +43,27 @@ test('Delete task completed: true', () => {
   expect(listNew).toHaveLength(2);
 });
 
-test('Edit value of description', () => {
-  const newText = { value: 'Project Done' };
-  const arrList = list[0];
-  // changeTask(newList.list[0], newText);
-  // expect(newList.list[0].description).toEqual(newText.value);
-  changeTask(arrList, newText);
-  expect(arrList.description).toEqual(newText.value);
-});
-
-
 test('Expect test to be edited', () => {
   const eleEdit = list[2];
   const span = {
     innerHTML: eleEdit.description,
-  }
+  };
+
+  const parentNode = {
+    child: newInput,
+  };
 
   const newInput = {
     value: "Visit my parents",
     parentNode: {
-      replaceChild: function(newChild, actualChild) {
+      replaceChild(newChild, actualChild) {
         if (parentNode.child === actualChild) {
           parentNode.child = newChild;
         }
-      }
-    }
-  }
-  const parentNode = {
-    child: newInput,
-  }
+      },
+    },
+  },
 
   editItem(span, newInput, eleEdit);
-  console.log(list);
   expect(list[2].description).toBe(newInput.value);
 });

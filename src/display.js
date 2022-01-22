@@ -124,4 +124,9 @@ const display = (list) => {
   listPlacehold.appendChild(listElements);
 };
 
-export { display, addItem, removeItem, editItem };
+export {
+  display,
+  addItem,
+  removeItem,
+  editItem,
+};

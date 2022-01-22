@@ -27,6 +27,12 @@ const removeItem = (list, element) => {
   });
 };
 
+const editItem = (description, taskInput, element) => {
+  description.innerHTML = taskInput.value;
+  taskInput.parentNode.replaceChild(description, taskInput);
+  element.description = taskInput.value;
+};
+
 const display = (list) => {
   const title = document.createElement('h4');
   title.innerHTML = 'Today´s To Do';
@@ -129,4 +135,5 @@ export {
   addItem,
   removeItem,
   changeTask,
+  editItem,
 };
