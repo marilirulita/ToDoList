@@ -1,11 +1,9 @@
 const checkStatus = (element, checkBox, span) => {
   element.completed = checkBox.checked;
-  if (span) {
-    if (checkBox.checked) {
-      span.classList.add('complete');
-    } else {
-      span.classList.remove('complete');
-    }
+  if (checkBox.checked) {
+    span.classList.add("complete");
+  } else {
+    span.classList.remove("complete");
   }
 };
 

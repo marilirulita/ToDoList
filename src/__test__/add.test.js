@@ -1,48 +1,25 @@
-import { addItem } from '../__mocks__/display.js';
+//import { addItem } from '../display.js'
+import {addItem, Task} from '../__mocks__/display.js';
 
-const input = {
-  value: 'Cook for the dinner at 6pm',
-};
+const list = [];
 
-const list = [
-  {
-    description: 'Finish project Microverse today',
-    completed: true,
-    index: 0,
-  },
-  {
-    description: 'Meeting at 5 pm',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Go to the supermarket',
-    completed: false,
-    index: 2,
-  },
-];
+list.push(new Task('Finish project Microverse today', true, 0));
+list.push(new Task('Meeting at 5 pm', false, 1));
+list.push(new Task('Go to the supermarket', false, 2));
 
 describe('Testing add', () => {
-  test('empty list', () => {
-    const emptyList = [];
-    addItem(input, emptyList);
-    expect(emptyList).toHaveLength(1);
-  });
 
-  test('add new item to list', () => {
-    addItem(input, list);
-    expect(list).toHaveLength(4);
-  });
-
-  test('Empty DOM', () => {
+  test('Add DOM eement to list', () => {
     document.body.innerHTML = `
     <ul id="container">
     <li><div class="flex"><input type="checkbox" class="checkbox">
     <input class="textarea" id ="TaskID" type="text"></div></li>
-    </ul>
-    `;
-    const emptyList = [];
-    addItem(input, emptyList);
-    expect(document.body.querySelectorAll('li')).toHaveLength(1);
+    </ul>`;
+
+    const newTask = document.getElementById('TaskID');
+    newTask.value = 'I have pending installations!';
+
+    addItem(newTask, list);
+    expect(list).toHaveLength(4);
   });
 });

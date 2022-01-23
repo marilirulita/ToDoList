@@ -1,50 +1,32 @@
 import { completed } from '../__mocks__/removeCompleted.js';
-import { removeItem } from '../__mocks__/display.js';
+import { removeItem, Task } from '../__mocks__/display.js';
 
-const list = [
-  {
-    description: 'Finish part 2',
-    completed: true,
-    index: 0,
-  },
-  {
-    description: 'Meeting at 8 am',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Hope approved at first strike',
-    completed: false,
-    index: 2,
-  },
-];
+const list = [];
+
+list.push(new Task('Finish part 2', true, 0));
+list.push(new Task('Meeting at 8 am', false, 1));
+list.push(new Task('Hope approved at first strike', false, 2));
 
 describe('Testing remove', () => {
   test('Test remove an item from list', () => {
-    const selecElem = {
-      description: 'Breakfast at 7am',
-      completed: false,
-      index: 3,
-    };
+    const selecElem = list[1];
 
     removeItem(list, selecElem);
-    expect(list).toHaveLength(3);
+    expect(list).toHaveLength(2);
   });
 
   test('Test remove completed task from list', () => {
     const newList = completed(list);
-    expect(newList).toHaveLength(2);
+    expect(newList).toHaveLength(1);
   });
 
   test('DOM..remove', () => {
     document.body.innerHTML = `<ul id="container">
-  <li><div class="flex"><input type="checkbox" class="checkbox">
-  <input class="textarea" id ="TaskID" type="text"></div></li>
-  </ul>`;
+    <li><span id="2"><input type="checkbox" class="checkbox">Finish part 2</span></li></ul>`;
 
-    const remove = document.getElementById('TaskID');
-    const newList = completed(list);
-    removeItem(list, remove, list[0]);
-    expect(newList).toHaveLength(2);
+    const remove = list[0];
+    removeItem(list, remove);
+
+    expect(list).toHaveLength(1);
   });
 });
