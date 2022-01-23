@@ -39,6 +39,7 @@
   "dependencies": {
     "@babel/core": "^7.16.10",
     "babel-jest": "^27.4.6",
+    "canvas": "^2.9.0",
     "jsdom": "^19.0.0",
     "lodash": "^4.17.21"
   },
