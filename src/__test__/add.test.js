@@ -1,5 +1,5 @@
-//import { addItem } from '../display.js'
-import {addItem, Task} from '../__mocks__/display.js';
+import { addItem } from '../display.js'
+import Task from '../listTask.js';
 
 const list = [];
 

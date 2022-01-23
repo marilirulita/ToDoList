@@ -1,5 +1,6 @@
-import { completed } from '../__mocks__/removeCompleted.js';
-import { removeItem, Task } from '../__mocks__/display.js';
+import { completed } from '../removeCompleted.js';
+import { removeItem } from '../display.js'
+import Task from '../listTask.js';
 
 const list = [];
 
