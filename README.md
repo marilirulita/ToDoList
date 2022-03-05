@@ -12,7 +12,7 @@ Build a simple HTML list of To Do tasks that will be built using webpack and ser
 
 ## Live Demo
 
-[Live Demo Link](https://marilirulita.github.io/ToDoList/)
+[Live Demo Link](https://priceless-shannon-9c10ff.netlify.app/)
 
 ## Getting Started
 
