@@ -31,7 +31,6 @@ h4 {
 
 input {
   padding: 0.5rem 1rem;
-  max-width: fit-content;
 }
 
 ::placeholder {
