@@ -6,9 +6,6 @@ module.exports = {
   entry: './src/index.js',
   devServer: {
     static: './dist',
-    server: {
-      type: 'https',
-    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -16,7 +13,6 @@ module.exports = {
     }),
   ],
   output: {
-    publicPath: '/ToDoList/',
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
